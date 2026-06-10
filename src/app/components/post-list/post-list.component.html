@@ -1,0 +1,13 @@
+@if(isLoading()){
+<h1>Loading post ..</h1>
+}@else {
+<div class="cardPostContainer">
+    @for(post of postList(); track post.id){
+    <div class="cardPost" [routerLink]="['post',post.id]">
+        <div class="title"><strong>Title :</strong> {{post.title}}</div>
+        <div class="body"><strong>Body :</strong> {{post.body}}</div>
+        <div class="user"><strong>User ID :</strong> {{post.userId}}</div>
+    </div>
+    }
+</div>
+}

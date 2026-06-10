@@ -1,0 +1,15 @@
+.cardPostContainer {
+    display: flex;
+    align-items: self-start;
+    gap: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cardPost {
+    max-width: 250px;
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
