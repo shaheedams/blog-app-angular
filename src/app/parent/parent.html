@@ -1,0 +1,8 @@
+<p>Child model data : {{ modelChild }}</p>
+<p>parent works!</p>
+
+<app-child
+  [ptocData]="'Hi from parent'"
+  (outputData)="getDataFromC($event)"
+  [(modelData)]="modelChild"
+></app-child>

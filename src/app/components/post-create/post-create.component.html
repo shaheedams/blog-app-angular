@@ -1,17 +1,19 @@
 <form [formGroup]="postForm">
+  <div class="formWrap">
+    <label for="user-title">Title</label>
+    <input type="text" id="user-title" formControlName="title" />
+    @if(postForm.get('title')?.touched && postForm.get('title')?.errors) {
+    <p>There is an error in the title!</p>
+    }
+  </div>
+  <div class="formWrap">
+    <label for="user-body">Body</label>
+    <input type="text" id="user-body" formControlName="body" />
+  </div>
+  <div class="formWrap">
+    <label for="user-id">User Id</label>
+    <input type="number" id="user-id" formControlName="userId" />
+  </div>
 
-    <div class="formWrap">
-        <label for="user-title">Title</label>
-        <input type="text" id="user-title" formControlName="title">
-    </div>
-    <div class="formWrap">
-        <label for="user-body">Body</label>
-        <input type="text" id="user-body" formControlName="body">
-    </div>
-    <div class="formWrap">
-        <label for="user-id">User Id</label>
-        <input type="number" id="user-id" formControlName="userId">
-    </div>
-
-    <button type="submit" [disabled]="!postForm.valid" (click)="onSubmit()">Add</button>
+  <button type="submit" [disabled]="!postForm.valid" (click)="onSubmit()">Add</button>
 </form>
