@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { PostService } from '../../services/post.service';
 import { CommonModule } from '@angular/common';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-post-create',
@@ -20,9 +21,22 @@ export class PostCreateComponent implements OnInit {
       userId: new FormControl('', [Validators.required, Validators.maxLength(3)]),
     });
 
+    // this.postForm.controls['title'].valueChanges.subscribe();
+    // this.postForm.controls['title'].addValidators([Validators.required]);
+    // this.postForm.controls['title'].enable().disable();
+
+    combineLatest([
+      this.postForm.controls['title'].valueChanges,
+      this.postForm.controls['body'].valueChanges,
+    ]).subscribe({
+      next(value) {
+        console.log('Triggered', value);
+      },
+    });
+
     this.postForm.valueChanges.subscribe({
       next(value) {
-        console.log(value);
+        // console.log(value);
       },
     });
   }
